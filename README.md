@@ -1,6 +1,6 @@
-# Next.js + Tailwind CSS Example
+# Painel para integração com API de revenda da Kinghost
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+Este projeto foi realizado como forma de estudo sobre o desenvolvimento de aplicações web utilizando React.js, Next.js, Tailwind
 
 ## Preview
 

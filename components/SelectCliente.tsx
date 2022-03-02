@@ -8,7 +8,7 @@ function SelectCliente(props: any) {
     if (props.clienteList.status != "ok") { return <div>Erro ao carregar lista de clientes</div> }
 
     return (
-        <select onChange={setClienteState} className="select w-full max-w-xs">
+        <select onChange={setClienteState} className="select w-full max-w-xs bg-base-100">
             <option disabled>Selecione o cliente</option>
             {
                 Object.keys(props.clienteList.body).map((key) => {

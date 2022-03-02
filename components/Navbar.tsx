@@ -15,7 +15,7 @@ function Navbar(props: any) {
       <div className="flex-1">
         <a className="normal-case text-xl">{props.clienteID}</a>
       </div>
-      <div className="flex-none gap-2">
+      <div className="flex-none gap-3">
         <div className="form-control">
           <SelectCliente
             clienteList={props.clienteList}
