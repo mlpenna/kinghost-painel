@@ -1,6 +1,7 @@
 # Painel para integração com API de revenda da Kinghost
 
-Este projeto foi realizado como forma de estudo sobre o desenvolvimento de aplicações web utilizando React.js, Next.js, Tailwind
+Este projeto foi realizado como um estudo sobre o desenvolvimento full stack utilizando React.js, Next.js, Tailwind, e alguns conceitos presentes nestas ferramentas.
+O objetivo foi construir um painel de controle para gerenciar as contas de hospedagens de alguns clientes utilizando a API de revenda disponibilizada pela empresa de hospedagem Kinghost. A documentação desta API se encontra [aqui](https://api.kinghost.net/doc/Cliente)
 
 ## Preview
 
