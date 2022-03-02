@@ -6,8 +6,9 @@ Apesar de ser um projeto de estudo, a aplicação utiliza um ambiente real forne
 
 ## Principais tecnologias
 
-O projeto foi desenvolvido utilizando os frameworks abaixo:
+O projeto foi desenvolvido utilizando as tecnologias e frameworks abaixo:
 
+- Typescript/CSS/HTML
 - React.js
 - Next.js
 - Tailwind CSS (com os componentes daisyUI)
