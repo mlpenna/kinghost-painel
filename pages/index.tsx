@@ -1,13 +1,14 @@
 import Navbar from "../components/Navbar";
 import DigestFetch from "digest-fetch"
 import { useState, useEffect } from 'react';
+import InfoDominio from "../components/InfoDominio";
 
 function Home(props: any) {
   const [clienteNome, setClienteNome] = useState("Cliente");
   const [clienteID, setClienteID] = useState("ID");
   const [domainList, setDomainList] = useState({});
 
-  useEffect(() => {
+  useEffect(() => { 
     fetch('/api/domains/' + clienteID)
       .then((res) => res.json())
       .then((data) => {
@@ -26,6 +27,7 @@ function Home(props: any) {
           clienteID={clienteID}
           setClienteID={setClienteID}
         />
+        <InfoDominio />
       </div>
     </>
   );

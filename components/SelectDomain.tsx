@@ -1,19 +1,23 @@
 
 function SelectDomain(props: any) {
 
-    if (props.domainList.status != "ok") { return <div>Erro ao carregar lista de dominios</div> }
+    if (props.domainList.status != "ok") { return <div></div> }
 
     return (
-        <select className="select w-full max-w-xs">
-            <option disabled>Selecione o domínio</option>
-            {
-                props.domainList.body.map((item, i) => {
-                    return (
-                        <option key={i}>{item.dominio + " | " + item.id}</option>
-                    )
-                })
-            }
-        </select>
+        <>
+            <label className="label">
+                <span className="label-text font-light">Selecione o domínio:</span>
+            </label>
+            <select className="select select-bordered select-sm w-full max-w-xs">
+                {
+                    props.domainList.body.map((item, i) => {
+                        return (
+                            <option key={i}>{item.dominio + " | " + item.id}</option>
+                        )
+                    })
+                }
+            </select>
+        </>
     );
 }
 

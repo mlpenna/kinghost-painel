@@ -5,17 +5,11 @@ import SelectDomain from './SelectDomain';
 function Navbar(props: any) {
 
   return (
-    <div className="flex-1 navbar rounded-md">
+    <div className="flex navbar gap-2 justify-around items-end shadow-md shadow-slate-300">
       <div className="flex-1">
-        <a className="normal-case text-xl">Painel de Controle</a>
+        <a className="normal-case font-bold text-3xl font-sans text-slate-600">Painel de Controle</a>
       </div>
       <div className="flex-1">
-        <a className="normal-case text-xl">{props.clienteNome}</a>
-      </div>
-      <div className="flex-1">
-        <a className="normal-case text-xl">{props.clienteID}</a>
-      </div>
-      <div className="flex-none gap-3">
         <div className="form-control">
           <SelectCliente
             clienteList={props.clienteList}
@@ -24,12 +18,10 @@ function Navbar(props: any) {
           />
         </div>
       </div>
-      <div className="flex-none gap-2">
+      <div className="flex-1">
         <div className="form-control">
           <SelectDomain domainList={props.domainList} />
         </div>
-      </div>
-      <div className="flex-1">
       </div>
     </div>
   );

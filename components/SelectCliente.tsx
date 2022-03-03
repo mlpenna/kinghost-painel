@@ -8,16 +8,20 @@ function SelectCliente(props: any) {
     if (props.clienteList.status != "ok") { return <div>Erro ao carregar lista de clientes</div> }
 
     return (
-        <select onChange={setClienteState} className="select w-full max-w-xs bg-base-100">
-            <option disabled>Selecione o cliente</option>
-            {
-                Object.keys(props.clienteList.body).map((key) => {
-                    return (
-                        <option data-key={props.clienteList.body[key].idCliente} key={props.clienteList.body[key].idCliente}>{props.clienteList.body[key].clienteNome}</option>
-                    )
-                })
-            }
-        </select>
+        <>
+            <label className="label">
+                <span className="label-text font-light">Selecione o cliente:</span>
+            </label>
+            <select onChange={setClienteState} className="select select-bordered select-sm w-full max-w-xs">
+                {
+                    Object.keys(props.clienteList.body).map((key) => {
+                        return (
+                            <option data-key={props.clienteList.body[key].idCliente} key={props.clienteList.body[key].idCliente}>{props.clienteList.body[key].clienteNome}</option>
+                        )
+                    })
+                }
+            </select>
+        </>
     );
 }
 
