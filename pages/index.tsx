@@ -1,20 +1,25 @@
 import Navbar from "../components/Navbar";
-import * as DigestFetch from "digest-fetch"
-import fetch from '../node_modules/node-fetch/@types/index.d';
-import { useState } from 'react';
-
-
+import DigestFetch from "digest-fetch"
+import { useState, useEffect } from 'react';
 
 function Home(props: any) {
-  // console.log(props.domainList);
   const [clienteNome, setClienteNome] = useState("Cliente");
   const [clienteID, setClienteID] = useState("ID");
+  const [domainList, setDomainList] = useState({});
+
+  useEffect(() => {
+    fetch('/api/domains/' + clienteID)
+      .then((res) => res.json())
+      .then((data) => {
+        setDomainList(data);
+      })
+  }, [clienteID]);
 
   return (
     <>
       <div className='container mx-auto'>
         <Navbar
-          domainList={props.domainList}
+          domainList={domainList}
           clienteList={props.clienteList}
           clienteNome={clienteNome}
           setClienteNome={setClienteNome}
@@ -28,22 +33,12 @@ function Home(props: any) {
 
 export async function getServerSideProps() {
 
-  // Fetch data from external API
 
-  const user = 'projetos@pcptelecom.com.br';
-  const password = '1357Uteste'
-  const baseDominios = 'https://api.uni5.net/dominio/240330/.json'
-  const baseClientes = 'https://api.uni5.net/cliente.json'
-  const client = new DigestFetch(user, password);
-  const options = {}
+  const fetchClient = new DigestFetch(process.env.API_USER, process.env.API_PASSWORD);
+  const res = await fetchClient.fetch(process.env.API_BASE_CLIENTES, {});
+  const clienteList = await res.json();
 
-  const res1 = await client.fetch(baseClientes, options);
-  const clienteList = await res1.json();
-
-  const res2 = await client.fetch(baseDominios, options);
-  const domainList = await res2.json();
-
-  return { props: { domainList, clienteList } }
+  return { props: { clienteList } }
 }
 
 
