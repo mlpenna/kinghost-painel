@@ -1,5 +1,5 @@
 
-import SelectCliente from './SelectCliente';
+import SelectCliente from './SelectCustomer';
 import SelectDomain from './SelectDomain';
 
 function Navbar(props: any) {
@@ -12,16 +12,16 @@ function Navbar(props: any) {
       <div className="flex-1">
         <div className="form-control">
           <SelectCliente
-            clienteList={props.clienteList}
-            setClienteNome={props.setClienteNome}
-            setClienteID={props.setClienteID}
+            customerList={props.customerList}
+            setCustomerName={props.setCustomerName}
+            setCustomerID={props.setCustomerID}
           />
         </div>
       </div>
       <div className="flex-1">
         <div className="form-control">
           <SelectDomain
-            domainList={props.domainList}
+            customerDomainList={props.customerDomainList}
             setSelectedDomainID={props.setSelectedDomainID}
           />
         </div>

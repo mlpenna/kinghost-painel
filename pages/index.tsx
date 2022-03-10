@@ -1,26 +1,26 @@
 import Navbar from "../components/Navbar";
 import DigestFetch from "digest-fetch"
 import { useState, useEffect } from 'react';
-import InfoDominio from "../components/InfoDominio";
+import InfoDominio from "../components/DomainInfo";
 
 
 function Home(props: any) {
-  const [clienteNome, setClienteNome] = useState("Cliente");
-  const [clienteID, setClienteID] = useState("");
-  const [domainList, setDomainList] = useState({});
+  const [customerName, setCustomerName] = useState("Cliente");
+  const [customerID, setCustomerID] = useState("");
+  const [customerDomainList, setCustomerDomainList] = useState({});
   const [selectedDomainID, setSelectedDomainID] = useState("")
 
   useEffect(() => {
-    fetch('/api/domain/' + clienteID)
+    fetch('/api/domain/' + customerID)
       .then((res) => res.json())
       .then((data) => {
-        setDomainList(data);
+        setCustomerDomainList(data);
         if (Object.keys(data).length != 0 && data.body[0].status != 'fail') {
           console.log(data)
           setSelectedDomainID(data.body[0].id)
         }
       })
-  }, [clienteID]);
+  }, [customerID]);
 
 
 
@@ -28,12 +28,12 @@ function Home(props: any) {
     <>
       <div className='container mx-auto'>
         <Navbar
-          domainList={domainList}
-          clienteList={props.clienteList}
-          clienteNome={clienteNome}
-          setClienteNome={setClienteNome}
-          clienteID={clienteID}
-          setClienteID={setClienteID}
+          customerDomainList={customerDomainList}
+          customerList={props.customerList}
+          customerName={customerName}
+          setCustomerName={setCustomerName}
+          customerID={customerID}
+          setCustomerID={setCustomerID}
           setSelectedDomainID={setSelectedDomainID}
         />
         <InfoDominio
@@ -49,9 +49,9 @@ export async function getServerSideProps() {
 
   const fetchClient = new DigestFetch(process.env.API_USER, process.env.API_PASSWORD);
   const res = await fetchClient.fetch(process.env.API_BASE_CLIENTES, {});
-  const clienteList = await res.json();
+  const customerList = await res.json();
 
-  return { props: { clienteList } }
+  return { props: { customerList } }
 }
 
 

@@ -6,7 +6,7 @@ function SelectDomain(props: any) {
         // console.log(e.target.selectedOptions[0].getAttribute('data-key'))
     }
 
-    if (props.domainList.status != "ok") { return <div>Selecione um cliente.</div> }
+    if (props.customerDomainList.status != "ok") { return <div>Selecione um cliente.</div> }
 
     return (
         <>
@@ -15,7 +15,7 @@ function SelectDomain(props: any) {
             </label>
             <select onChange={setDomainState} className="select select-bordered select-sm w-full max-w-xs">
                 {
-                    props.domainList.body.map((item, i) => {
+                    props.customerDomainList.body.map((item, i) => {
                         return (
                             <option data-key={item.id} key={i}>{item.dominio + " | " + item.id}</option>
                         )
