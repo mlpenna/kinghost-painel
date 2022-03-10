@@ -20,7 +20,10 @@ function Navbar(props: any) {
       </div>
       <div className="flex-1">
         <div className="form-control">
-          <SelectDomain domainList={props.domainList} />
+          <SelectDomain
+            domainList={props.domainList}
+            setSelectedDomainID={props.setSelectedDomainID}
+          />
         </div>
       </div>
     </div>

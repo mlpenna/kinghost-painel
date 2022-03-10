@@ -3,18 +3,26 @@ import DigestFetch from "digest-fetch"
 import { useState, useEffect } from 'react';
 import InfoDominio from "../components/InfoDominio";
 
+
 function Home(props: any) {
   const [clienteNome, setClienteNome] = useState("Cliente");
-  const [clienteID, setClienteID] = useState("ID");
+  const [clienteID, setClienteID] = useState("");
   const [domainList, setDomainList] = useState({});
+  const [selectedDomainID, setSelectedDomainID] = useState("")
 
-  useEffect(() => { 
-    fetch('/api/domains/' + clienteID)
+  useEffect(() => {
+    fetch('/api/domain/' + clienteID)
       .then((res) => res.json())
       .then((data) => {
         setDomainList(data);
+        if (Object.keys(data).length != 0 && data.body[0].status != 'fail') {
+          console.log(data)
+          setSelectedDomainID(data.body[0].id)
+        }
       })
   }, [clienteID]);
+
+
 
   return (
     <>
@@ -26,8 +34,11 @@ function Home(props: any) {
           setClienteNome={setClienteNome}
           clienteID={clienteID}
           setClienteID={setClienteID}
+          setSelectedDomainID={setSelectedDomainID}
         />
-        <InfoDominio />
+        <InfoDominio
+          selectedDomainID={selectedDomainID}
+        />
       </div>
     </>
   );

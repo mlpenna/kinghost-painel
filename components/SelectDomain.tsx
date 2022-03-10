@@ -1,18 +1,23 @@
 
 function SelectDomain(props: any) {
 
-    if (props.domainList.status != "ok") { return <div></div> }
+    function setDomainState(e: any) {
+        props.setSelectedDomainID(e.target.selectedOptions[0].getAttribute('data-key'));
+        // console.log(e.target.selectedOptions[0].getAttribute('data-key'))
+    }
+
+    if (props.domainList.status != "ok") { return <div>Selecione um cliente.</div> }
 
     return (
         <>
             <label className="label">
                 <span className="label-text font-light">Selecione o domínio:</span>
             </label>
-            <select className="select select-bordered select-sm w-full max-w-xs">
+            <select onChange={setDomainState} className="select select-bordered select-sm w-full max-w-xs">
                 {
                     props.domainList.body.map((item, i) => {
                         return (
-                            <option key={i}>{item.dominio + " | " + item.id}</option>
+                            <option data-key={item.id} key={i}>{item.dominio + " | " + item.id}</option>
                         )
                     })
                 }

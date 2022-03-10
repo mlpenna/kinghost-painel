@@ -4,6 +4,10 @@ function InfoDominio(props: any) {
             <div className="flex p-8 flex-col">
                 <div className="normal-case ml-6 font-bold text-xl font-sans text-slate-600">Informações Domínio</div>
                 <div className="grid grid-cols-5 gap-1 m-6">
+                <div className="">
+                        <span className="mr-4 font-bold">Domínio ID:</span>
+                        <span>{props.selectedDomainID}</span>
+                    </div>
                     <div className="">
                         <span className="mr-4 font-bold">Domínio:</span>
                         <span>pcptelecom.com.br</span>
