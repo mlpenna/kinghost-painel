@@ -8,7 +8,8 @@ function Home(props: any) {
   const [customerName, setCustomerName] = useState("Cliente");
   const [customerID, setCustomerID] = useState("");
   const [customerDomainList, setCustomerDomainList] = useState({});
-  const [selectedDomainID, setSelectedDomainID] = useState("")
+  const [selectedDomainID, setSelectedDomainID] = useState("");
+  const [selectedDomainInfo, setSelectedDomainInfo] = useState({});
 
   useEffect(() => {
     fetch('/api/domain/' + customerID)
@@ -16,11 +17,18 @@ function Home(props: any) {
       .then((data) => {
         setCustomerDomainList(data);
         if (Object.keys(data).length != 0 && data.body[0].status != 'fail') {
-          console.log(data)
           setSelectedDomainID(data.body[0].id)
         }
       })
   }, [customerID]);
+
+  useEffect(() => {
+    fetch('/api/domain/info/' + selectedDomainID)
+      .then((res) => res.json())
+      .then((data) => {
+        setSelectedDomainInfo(data)
+      })
+  }, [selectedDomainID])
 
 
 
@@ -38,6 +46,7 @@ function Home(props: any) {
         />
         <InfoDominio
           selectedDomainID={selectedDomainID}
+          selectedDomainInfo={selectedDomainInfo}
         />
       </div>
     </>

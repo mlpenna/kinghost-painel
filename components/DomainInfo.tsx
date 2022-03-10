@@ -1,44 +1,49 @@
 function InfoDominio(props: any) {
+
+    if (typeof props.selectedDomainInfo === 'undefined' && Object.keys(props.selectedDomainInfo.body).length === 0 || props.selectedDomainInfo.status != 'ok') {
+        return (
+            <div className="flex p-8 flex-col">
+                <div className="normal-case ml-6 font-bold text-xl font-sans text-slate-600">Informações Domínio</div>
+            </div>
+        )
+    }
+
     return (
         <>
             <div className="flex p-8 flex-col">
                 <div className="normal-case ml-6 font-bold text-xl font-sans text-slate-600">Informações Domínio</div>
-                <div className="grid grid-cols-5 gap-1 m-6">
-                <div className="">
+                <div className="grid grid-cols-4 border border-gray-600 bg-white gap-1 m-6">
+                    <div className="">
                         <span className="mr-4 font-bold">Domínio ID:</span>
                         <span>{props.selectedDomainID}</span>
                     </div>
                     <div className="">
                         <span className="mr-4 font-bold">Domínio:</span>
-                        <span>pcptelecom.com.br</span>
+                        <span>{props.selectedDomainInfo.body.dominio}</span>
                     </div>
                     <div className="">
                         <span className="mr-4 font-bold">Servidor:</span>
-                        <span>web15f32</span>
+                        <span>{props.selectedDomainInfo.body.servidor}</span>
                     </div>
                     <div className="">
                         <span className="mr-4 font-bold">Espaço FTP:</span>
-                        <span>100</span>
+                        <span>{props.selectedDomainInfo.body.discoWeb}</span>
                     </div>
                     <div className="">
                         <span className="mr-4 font-bold">Espaço Banco:</span>
-                        <span>100</span>
+                        <span>{props.selectedDomainInfo.body.discoBanco}</span>
                     </div>
                     <div className="">
                         <span className="mr-4 font-bold">Espaço E-mail:</span>
-                        <span>300</span>
+                        <span>{props.selectedDomainInfo.body.discoEmails}</span>
                     </div>
                     <div className="">
                         <span className="mr-4 font-bold">Criado Em:</span>
-                        <span>28/02/2021</span>
-                    </div>
-                    <div className="">
-                        <span className="mr-4 font-bold">Status:</span>
-                        <span>Ativo</span>
+                        <span>{props.selectedDomainInfo.body.dataCriado}</span>
                     </div>
                     <div className="">
                         <span className="mr-4 font-bold">Plano:</span>
-                        <span>Hospedagem Básica</span>
+                        <span>{props.selectedDomainInfo.body.plano}</span>
                     </div>
                 </div>
             </div>
