@@ -2,6 +2,7 @@ import Navbar from "../components/Navbar";
 import DigestFetch from "digest-fetch"
 import { useState, useEffect } from 'react';
 import InfoDominio from "../components/DomainInfo";
+import EmailTable from "../components/EmailTable";
 
 
 function Home(props: any) {
@@ -10,8 +11,11 @@ function Home(props: any) {
   const [customerDomainList, setCustomerDomainList] = useState({});
   const [selectedDomainID, setSelectedDomainID] = useState("");
   const [selectedDomainInfo, setSelectedDomainInfo] = useState({});
+  const [domainEmailList, setDomainEmailList] = useState({});
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+
     fetch('/api/domain/' + customerID)
       .then((res) => res.json())
       .then((data) => {
@@ -23,14 +27,18 @@ function Home(props: any) {
   }, [customerID]);
 
   useEffect(() => {
+    setLoading(true);
     fetch('/api/domain/info/' + selectedDomainID)
       .then((res) => res.json())
       .then((data) => {
         setSelectedDomainInfo(data)
       })
+    fetch('/api/domain/email/' + selectedDomainID)
+      .then((res) => res.json())
+      .then((data) => {
+        setDomainEmailList(data)
+      })
   }, [selectedDomainID])
-
-
 
   return (
     <>
@@ -47,6 +55,9 @@ function Home(props: any) {
         <InfoDominio
           selectedDomainID={selectedDomainID}
           selectedDomainInfo={selectedDomainInfo}
+        />
+        <EmailTable
+          domainEmailList={domainEmailList}
         />
       </div>
     </>

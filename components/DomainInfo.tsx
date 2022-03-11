@@ -2,9 +2,10 @@ function InfoDominio(props: any) {
 
     if (typeof props.selectedDomainInfo === 'undefined' && Object.keys(props.selectedDomainInfo.body).length === 0 || props.selectedDomainInfo.status != 'ok') {
         return (
-            <div className="flex p-8 flex-col">
-                <div className="normal-case ml-6 font-bold text-xl font-sans text-slate-600">Informações Domínio</div>
-            </div>
+            <div></div>
+            // <div className="flex p-8 flex-col">
+            //     <div className="normal-case ml-6 font-bold text-xl font-sans text-slate-600">Informações Domínio</div>
+            // </div>
         )
     }
 
@@ -12,7 +13,7 @@ function InfoDominio(props: any) {
         <>
             <div className="flex p-8 flex-col">
                 <div className="normal-case ml-6 font-bold text-xl font-sans text-slate-600">Informações Domínio</div>
-                <div className="grid grid-cols-4 border border-gray-600 bg-white gap-1 m-6">
+                <div className="grid grid-cols-4 border border-gray-600 bg-white gap-1 m-6 p-3 rounded-md">
                     <div className="">
                         <span className="mr-4 font-bold">Domínio ID:</span>
                         <span>{props.selectedDomainID}</span>
@@ -27,15 +28,15 @@ function InfoDominio(props: any) {
                     </div>
                     <div className="">
                         <span className="mr-4 font-bold">Espaço FTP:</span>
-                        <span>{props.selectedDomainInfo.body.discoWeb}</span>
+                        <span>{props.selectedDomainInfo.body.discoWeb + " MB"}</span>
                     </div>
                     <div className="">
                         <span className="mr-4 font-bold">Espaço Banco:</span>
-                        <span>{props.selectedDomainInfo.body.discoBanco}</span>
+                        <span>{props.selectedDomainInfo.body.discoBanco + " MB"}</span>
                     </div>
                     <div className="">
                         <span className="mr-4 font-bold">Espaço E-mail:</span>
-                        <span>{props.selectedDomainInfo.body.discoEmails}</span>
+                        <span>{props.selectedDomainInfo.body.discoEmails + " MB"}</span>
                     </div>
                     <div className="">
                         <span className="mr-4 font-bold">Criado Em:</span>
