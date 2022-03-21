@@ -1,7 +1,16 @@
+import { useEffect, useState } from 'react';
+import { computeOccupiedSpace } from '../lib/utils';
 import EmailTableEntry from './EmailTableEntry';
 
 
 function EmailTable({domainEmailList}: any) {
+
+  const [occupiedSpace, setOccupiedSpace] = useState(0);
+
+  useEffect(() => {
+    computeOccupiedSpace(domainEmailList.body)
+  }, [domainEmailList])
+  
 
   if (typeof domainEmailList === 'undefined' && Object.keys(domainEmailList.body).length === 0 || domainEmailList.status != 'ok') {
     return (
@@ -20,8 +29,14 @@ function EmailTable({domainEmailList}: any) {
           <thead>
 
             <tr>
-              <th>Ativo</th>
-              <th>Conta</th>
+              <th>Ativo</th><th>Conta</th>
+              <th>Quota</th>
+              <th>Ocupado</th>
+             
+              <th>Conta</th><th>Conta</th>
+              <th>Quota</th>
+              <th>Ocupado</th>
+             
               <th>Quota</th>
               <th>Ocupado</th>
               <th>%</th>
@@ -30,7 +45,7 @@ function EmailTable({domainEmailList}: any) {
           <tbody>
             {
               domainEmailList.body.map((item: any, i: number) => {
-                console.log(item)
+                // console.log(item)
                 return (
                   <EmailTableEntry emailInfo={item} />
                 )

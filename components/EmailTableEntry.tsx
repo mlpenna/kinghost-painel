@@ -1,4 +1,4 @@
-import bytesToMegabytes from "../lib/utils"; "../lib/utils"
+import { bytesToMegabytes } from "../lib/utils";
 
 function EmailTableEntry({ emailInfo }: any) {
 
