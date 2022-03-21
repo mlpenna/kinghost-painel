@@ -3,9 +3,9 @@ import DigestFetch from "digest-fetch"
 import { useState, useEffect } from 'react';
 import InfoDominio from "../components/DomainInfo";
 import EmailTable from "../components/EmailTable";
+"digest-fetch"
 
-
-function Home(props: any) {
+function Home({customerList}: any) {
   const [customerName, setCustomerName] = useState("Cliente");
   const [customerID, setCustomerID] = useState("");
   const [customerDomainList, setCustomerDomainList] = useState({});
@@ -45,7 +45,7 @@ function Home(props: any) {
       <div className='container mx-auto'>
         <Navbar
           customerDomainList={customerDomainList}
-          customerList={props.customerList}
+          customerList={customerList}
           customerName={customerName}
           setCustomerName={setCustomerName}
           customerID={customerID}
@@ -66,6 +66,7 @@ function Home(props: any) {
 
 export async function getServerSideProps() {
 
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
   const fetchClient = new DigestFetch(process.env.API_USER, process.env.API_PASSWORD);
   const res = await fetchClient.fetch(process.env.API_BASE_CLIENTES, {});

@@ -1,13 +1,13 @@
 import EmailTableEntry from './EmailTableEntry';
 
 
-function EmailTable(props: any) {
+function EmailTable({domainEmailList}: any) {
 
-  if (typeof props.domainEmailList === 'undefined' && Object.keys(props.domainEmaiList.body).length === 0 || props.domainEmailList.status != 'ok') {
+  if (typeof domainEmailList === 'undefined' && Object.keys(domainEmailList.body).length === 0 || domainEmailList.status != 'ok') {
     return (
       <div></div>
       // <div className="flex p-8 flex-col">
-      //   <div className="normal-case ml-6 font-bold text-xl font-sans text-slate-600">Contas de E-mail</div>
+      //   <didomainEmailListv className="normal-case ml-6 font-bold text-xl font-sans text-slate-600">Contas de E-mail</div>
       // </div>
     )
   }
@@ -29,7 +29,7 @@ function EmailTable(props: any) {
           </thead>
           <tbody>
             {
-              props.domainEmailList.body.map((item: any, i: number) => {
+              domainEmailList.body.map((item: any, i: number) => {
                 console.log(item)
                 return (
                   <EmailTableEntry emailInfo={item} />
