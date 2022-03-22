@@ -15,6 +15,8 @@ function EmailTableEntry({ emailInfo }: any) {
                 <td>{espacoQuota + " MB"}</td>
                 <td>{espacoOcupado + " MB"}</td>
                 <div className="tooltip tooltip-left" data-tip={porcentagemOcupado + " %"}><td><progress className="progress progress-warning h-3 w-20" value={porcentagemOcupado} max="100"></progress></td></div>
+                <td><button className="btn btn-xs">+100 MB</button></td>
+                <td><button className="btn btn-xs">-100 MB</button></td>
             </tr>
         );
     }

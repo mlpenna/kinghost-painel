@@ -16,11 +16,12 @@ function Home({ customerList }: any) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true)
     fetch('/api/domain/' + customerID)
       .then((res) => res.json())
       .then((data) => {
-        setCustomerDomainList(data);
         if (Object.keys(data).length != 0 && data.body[0].status != 'fail') {
+          setCustomerDomainList(data);
           setSelectedDomainID(data.body[0].id)
         }
       })
@@ -44,24 +45,24 @@ function Home({ customerList }: any) {
 
   return (
     <>
+      <Navbar
+        customerDomainList={customerDomainList}
+        customerList={customerList}
+        customerName={customerName}
+        setCustomerName={setCustomerName}
+        customerID={customerID}
+        setCustomerID={setCustomerID}
+        setSelectedDomainID={setSelectedDomainID}
+      />
       <div className='container mx-auto'>
-        <Navbar
-          customerDomainList={customerDomainList}
-          customerList={customerList}
-          customerName={customerName}
-          setCustomerName={setCustomerName}
-          customerID={customerID}
-          setCustomerID={setCustomerID}
-          setSelectedDomainID={setSelectedDomainID}
-        />
-
         {loading
           ?
-          <div className="flex flex-col justify-center items-center">
-            <div className="normal-case mb-5 font-bold text-xl font-sans text-slate-600">Carregando Informações de Domínio...</div>
-
-            <ClipLoader color="#0f0f02b" loading={loading} size={70} />
-          </div>
+          <>
+            <div className="flex flex-col justify-center items-center">
+              <div className="normal-case mb-5 font-bold text-xl font-sans text-slate-600">Carregando Informações de Domínio...</div>
+              <ClipLoader color="#0f0f02b" loading={loading} size={70} />
+            </div>
+          </>
           :
           <>
             <InfoDominio
