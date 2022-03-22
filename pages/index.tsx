@@ -5,7 +5,7 @@ import InfoDominio from "../components/DomainInfo";
 import EmailTable from "../components/EmailTable";
 "digest-fetch"
 
-function Home({customerList}: any) {
+function Home({ customerList }: any) {
   const [customerName, setCustomerName] = useState("Cliente");
   const [customerID, setCustomerID] = useState("");
   const [customerDomainList, setCustomerDomainList] = useState({});
@@ -15,7 +15,6 @@ function Home({customerList}: any) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-
     fetch('/api/domain/' + customerID)
       .then((res) => res.json())
       .then((data) => {
@@ -58,6 +57,7 @@ function Home({customerList}: any) {
         />
         <EmailTable
           domainEmailList={domainEmailList}
+          domainEmailQuota={selectedDomainInfo?.body?.discoEmails}
         />
       </div>
     </>

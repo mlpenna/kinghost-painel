@@ -6,7 +6,7 @@ function EmailTableEntry({ emailInfo }: any) {
     if (emailInfo.tipo === "Caixa Postal") {
         const espacoOcupado: string = bytesToMegabytes(emailInfo.ocupado);
         const espacoQuota: string = bytesToMegabytes(emailInfo.quota);
-        const porcentagemOcupado: string = (100 * parseInt(espacoOcupado) / parseInt(espacoQuota)).toFixed(10);
+        const porcentagemOcupado: string = (100 * parseInt(espacoOcupado) / parseInt(espacoQuota)).toFixed(2);
 
         return (
             <tr>
@@ -14,7 +14,7 @@ function EmailTableEntry({ emailInfo }: any) {
                 <td>{emailInfo.email}</td>
                 <td>{espacoQuota + " MB"}</td>
                 <td>{espacoOcupado + " MB"}</td>
-                <td><progress className="progress progress-warning h-3 w-20" value={porcentagemOcupado} max="100"></progress></td>
+                <div className="tooltip tooltip-left" data-tip={porcentagemOcupado + " %"}><td><progress className="progress progress-warning h-3 w-20" value={porcentagemOcupado} max="100"></progress></td></div>
             </tr>
         );
     }

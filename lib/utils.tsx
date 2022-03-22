@@ -2,14 +2,15 @@ export function bytesToMegabytes(b: number) {
     return (b / Math.pow(1024, 2)).toFixed(2);
 }
 
-export function computeOccupiedSpace(emailList) {
+export function computeOccupiedSpace(emailList: any) {
     let totalOccupied = 0;
-    // console.log(emailList);
+
+    if (emailList === undefined) { return 0; }
     emailList.map((item: any) => {
         totalOccupied += parseInt(item.quota);
-        console.log(bytesToMegabytes(totalOccupied));
     })
-    return totalOccupied;
+    console.log(bytesToMegabytes(totalOccupied));
+    return bytesToMegabytes(totalOccupied);
 }
 
 // export default { bytesToMegabytes, computeOccupiedSpace };
