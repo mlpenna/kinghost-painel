@@ -3,6 +3,7 @@ import DigestFetch from "digest-fetch"
 import { useState, useEffect } from 'react';
 import InfoDominio from "../components/DomainInfo";
 import EmailTable from "../components/EmailTable";
+import { ClipLoader } from "react-spinners";
 "digest-fetch"
 
 function Home({ customerList }: any) {
@@ -36,8 +37,10 @@ function Home({ customerList }: any) {
       .then((res) => res.json())
       .then((data) => {
         setDomainEmailList(data)
+        setLoading(false);
       })
   }, [selectedDomainID])
+
 
   return (
     <>
@@ -51,14 +54,26 @@ function Home({ customerList }: any) {
           setCustomerID={setCustomerID}
           setSelectedDomainID={setSelectedDomainID}
         />
-        <InfoDominio
-          selectedDomainID={selectedDomainID}
-          selectedDomainInfo={selectedDomainInfo}
-        />
-        <EmailTable
-          domainEmailList={domainEmailList}
-          domainEmailQuota={selectedDomainInfo?.body?.discoEmails}
-        />
+
+        {loading
+          ?
+          <div className="flex flex-col justify-center items-center">
+            <div className="normal-case mb-5 font-bold text-xl font-sans text-slate-600">Carregando Informações de Domínio...</div>
+
+            <ClipLoader color="#0f0f02b" loading={loading} size={70} />
+          </div>
+          :
+          <>
+            <InfoDominio
+              selectedDomainID={selectedDomainID}
+              selectedDomainInfo={selectedDomainInfo}
+            />
+            <EmailTable
+              domainEmailList={domainEmailList}
+              domainEmailQuota={selectedDomainInfo?.body?.discoEmails}
+            />
+          </>
+        }
       </div>
     </>
   );

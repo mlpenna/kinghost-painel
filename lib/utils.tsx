@@ -9,7 +9,6 @@ export function computeOccupiedSpace(emailList: any) {
     emailList.map((item: any) => {
         totalOccupied += parseInt(item.quota);
     })
-    console.log(bytesToMegabytes(totalOccupied));
     return bytesToMegabytes(totalOccupied);
 }
 

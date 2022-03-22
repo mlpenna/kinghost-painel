@@ -24,7 +24,7 @@ function EmailTable({ domainEmailList, domainEmailQuota }: any) {
     <div className="flex p-8 flex-col">
       <div className="normal-case ml-3 font-bold text-xl font-sans text-slate-600">Contas de E-mail</div>
       <div className="normal-case ml-3 text-m font-sans text-slate-500">Espaço disponivel para e-mails: {parseInt(domainEmailQuota) - occupiedSpace + " MB"}</div>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-visible">
         <table className="table m-2 table-compact w-full">
           <thead>
             <tr>
@@ -37,7 +37,6 @@ function EmailTable({ domainEmailList, domainEmailQuota }: any) {
           <tbody>
             {
               domainEmailList.body.map((item: any, i: number) => {
-                // console.log(item)
                 return (
                   <EmailTableEntry emailInfo={item} />
                 )
