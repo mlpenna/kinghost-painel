@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import InfoDominio from "../components/DomainInfo";
 import EmailTable from "../components/EmailTable";
 import { ClipLoader } from "react-spinners";
-"digest-fetch"
 
 function Home({ customerList }: any) {
   const [customerName, setCustomerName] = useState("Cliente");
@@ -14,6 +13,7 @@ function Home({ customerList }: any) {
   const [selectedDomainInfo, setSelectedDomainInfo] = useState({});
   const [domainEmailList, setDomainEmailList] = useState({});
   const [loading, setLoading] = useState(false);
+  const [changedSize, setChangedSize] =  useState(false);
 
   useEffect(() => {
     setLoading(true)
@@ -72,6 +72,8 @@ function Home({ customerList }: any) {
             <EmailTable
               domainEmailList={domainEmailList}
               domainEmailQuota={selectedDomainInfo?.body?.discoEmails}
+              selectedDomainID={selectedDomainID}
+              setSelectedDomainID={setSelectedDomainID}
             />
           </>
         }

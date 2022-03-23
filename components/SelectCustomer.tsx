@@ -13,6 +13,7 @@ function SelectCliente(props: any) {
                 <span className="label-text font-light">Selecione o cliente:</span>
             </label>
             <select onChange={setCustomerState} className="select select-bordered select-sm w-full max-w-xs">
+                <option disabled selected>Selecione o cliente desejado</option>
                 {
                     Object.keys(props.customerList.body).map((key) => {
                         return (

@@ -1,6 +1,6 @@
-import { bytesToMegabytes } from "../lib/utils";
+import { adjustMailboxSizeAdd, adjustMailboxSizeSub, bytesToMegabytes } from "../lib/utils";
 
-function EmailTableEntry({ emailInfo }: any) {
+function EmailTableEntry({ emailInfo, selectedDomainID }: any) {
 
 
     if (emailInfo.tipo === "Caixa Postal") {
@@ -15,14 +15,14 @@ function EmailTableEntry({ emailInfo }: any) {
                 <td>{espacoQuota + " MB"}</td>
                 <td>{espacoOcupado + " MB"}</td>
                 <div className="tooltip tooltip-left" data-tip={porcentagemOcupado + " %"}><td><progress className="progress progress-warning h-3 w-20" value={porcentagemOcupado} max="100"></progress></td></div>
-                <td><button className="btn btn-xs">+100 MB</button></td>
-                <td><button className="btn btn-xs">-100 MB</button></td>
+                <td><button onClick={() => {adjustMailboxSizeAdd(emailInfo.email, parseInt(selectedDomainID), parseInt(espacoQuota))}} className="btn btn-xs">+100 MB</button></td>
+                <td><button onClick={() => {adjustMailboxSizeSub(emailInfo.email, parseInt(selectedDomainID), parseInt(espacoQuota))}} className="btn btn-xs">-100 MB</button></td>
             </tr>
         );
     }
 
     return (
-        <div></div>
+        null
     )
 }
 
