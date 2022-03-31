@@ -11,12 +11,9 @@ export default function handler(req: any, res: any) {
             'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8' // Indicates the content 
         },
     }
-    console.log(bodyString)
-    console.log(req.body)
     client.fetch(baseURL, putMethod)
         .then((res: any) => res.json())
         .then((data: any) => {
-            // console.log(data)
             res.status(200).json(data)
         })
 }

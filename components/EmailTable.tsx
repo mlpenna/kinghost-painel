@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import { computeOccupiedSpace } from '../lib/utils';
 import EmailTableEntry from './EmailTableEntry';
-import SelectDomain from './SelectDomain';
 
 
-function EmailTable({ domainEmailList, domainEmailQuota, selectedDomainID }: any) {
+function EmailTable({ setSelectedDomainID, domainEmailList, domainEmailQuota, selectedDomainID }: any) {
 
   const [occupiedSpace, setOccupiedSpace] = useState(0);
 
@@ -33,17 +32,22 @@ function EmailTable({ domainEmailList, domainEmailQuota, selectedDomainID }: any
               <th>Quota</th>
               <th>Ocupado</th>
               <th>%</th>
+              <th>Adicionar Espaço</th>
+              <th>Remover Espaço</th>
             </tr>
           </thead>
           <tbody>
             {
               domainEmailList.body.map((item: any, i: number) => {
                 return (
-                  <EmailTableEntry emailInfo={item} selectedDomainID={selectedDomainID} />
+                  <EmailTableEntry
+                    emailInfo={item}
+                    selectedDomainID={selectedDomainID}
+                    setSelectedDomainID={setSelectedDomainID}
+                  />
                 )
               })
             }
-            {/* <EmailTableEntry /> */}
           </tbody>
         </table>
       </div>
