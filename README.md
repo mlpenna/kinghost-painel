@@ -4,7 +4,7 @@ Este projeto foi realizado como um estudo sobre o desenvolvimento full stack uti
 O objetivo foi construir um painel de controle para gerenciar as contas de hospedagens de alguns clientes utilizando a API de revenda disponibilizada pela empresa de hospedagem Kinghost. A documentação desta API se encontra [aqui](https://api.kinghost.net/doc/Cliente).
 Apesar de ser um projeto de estudo, a aplicação utiliza um ambiente real fornecido por uma empresa de hospedagem parceira.
 
-<img src="https://giphy.com/embed/i7mHz6Qe0eDUb0JPij.gif" width="40" height="40" />
+<img src="https://media.giphy.com/media/i7mHz6Qe0eDUb0JPij/giphy.gif" width="40" height="40" />
 
 ## Principais tecnologias
 
