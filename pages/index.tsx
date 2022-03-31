@@ -1,9 +1,10 @@
+import { useState, useEffect } from 'react';
+import { ClipLoader } from "react-spinners";
+
 import Navbar from "../components/Navbar";
 import DigestFetch from "digest-fetch"
-import { useState, useEffect } from 'react';
 import InfoDominio from "../components/DomainInfo";
 import EmailTable from "../components/EmailTable";
-import { ClipLoader } from "react-spinners";
 
 function Home({ customerList }: any) {
     const [customerName, setCustomerName] = useState("Cliente");

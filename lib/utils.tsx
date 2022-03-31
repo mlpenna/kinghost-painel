@@ -1,10 +1,8 @@
 export function bytesToMegabytes(b: number) {
-
     return (b / Math.pow(1024, 2)).toFixed(2);
 }
 
 export function computeOccupiedSpace(emailList: any) {
-
     let totalOccupied = 0;
 
     if (emailList === undefined) { return 0; }
@@ -14,8 +12,7 @@ export function computeOccupiedSpace(emailList: any) {
     return bytesToMegabytes(totalOccupied);
 }
 
-export function adjustMailboxSizeAdd(mailBox: string, domain: number, newQuota: number, setSelectedDomainID: any) {
-
+export function adjustMailboxSizeAdd(mailBox: string, domain: number, newQuota: number, setSelectedDomainID: any, alertHandle: any) {
     setSelectedDomainID("");
 
     const postData = {
@@ -35,16 +32,16 @@ export function adjustMailboxSizeAdd(mailBox: string, domain: number, newQuota: 
 
     fetch('/api/email/adjust/', putMethod)
         .then((res) => res.json())
-        .then(() => {
+        .then((data) => {
             setSelectedDomainID(domain);
+            console.log(data)
+            if(data.status === 'ok') {alertHandle.show("Espaço da conta ajustado com sucesso.", { timeout: '2000', type: 'success' })}
+            if(data.status === 'fail') {alertHandle.show(data.error_msg, { timeout: '2000', type: 'error' })}
+
         })
-
-
-
 }
 
-export function adjustMailboxSizeSub(mailBox: string, domain: number, newQuota: number, setSelectedDomainID: any) {
-    
+export function adjustMailboxSizeSub(mailBox: string, domain: number, newQuota: number, setSelectedDomainID: any, alertHandle: any) {
     setSelectedDomainID("");
 
     const postData = {
@@ -64,8 +61,10 @@ export function adjustMailboxSizeSub(mailBox: string, domain: number, newQuota: 
 
     fetch('/api/email/adjust/', putMethod)
         .then((res) => res.json())
-        .then(() => {
-            setSelectedDomainID(domain);
+        .then((data) => {
+            setSelectedDomainID(domain);          
+            if(data.status === 'ok') {alertHandle.show("Espaço da conta ajustado com sucesso.", { timeout: '2000', type: 'success' })}
+            if(data.status === 'fail') {alertHandle.show(data.error_msg, { timeout: '2000', type: 'error' })}
         })
 }
 

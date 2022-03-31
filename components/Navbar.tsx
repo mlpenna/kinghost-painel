@@ -5,7 +5,7 @@ import SelectDomain from './SelectDomain';
 function Navbar(props: any) {
 
   return (
-    <div className="flex navbar gap-2 justify-around items-end shadow-md shadow-slate-300 m-6">
+    <div className="flex navbar gap-2 justify-around items-end shadow-md shadow-slate-300">
       <div className="flex-1">
         <a className="normal-case font-bold text-3xl font-sans text-slate-600">Painel de Controle</a>
       </div>
