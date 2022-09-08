@@ -12,7 +12,7 @@ https://user-images.githubusercontent.com/97969692/161121725-82b16226-f02b-4957-
 O projeto foi desenvolvido utilizando as tecnologias e frameworks abaixo:
 
 - Typescript/CSS/HTML
-- React.js
+- React
 - Next.js
 - Tailwind CSS
 
